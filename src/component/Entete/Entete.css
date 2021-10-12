@@ -1,0 +1,10 @@
+nav{
+    display: flex;
+    flex-direction: row;
+}
+a{
+    margin-left: 16px;
+}
+.pageActive {
+    color: aquamarine;
+}

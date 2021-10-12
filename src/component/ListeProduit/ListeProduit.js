@@ -25,10 +25,10 @@ export default class ListeProduit extends React.Component{
 
     retirerProduit(){
         console.log("retirer produit");
-        console.log(this);
         this.setState((state)=>{
-            state.data.pop();
-            return ({data : state.data});
+            let tab = [...state.data]; // make a separate copy of the array (https://stackoverflow.com/questions/36326612/how-to-delete-an-item-from-state-array)
+            tab.pop();
+            return ({data : tab});
         });
     }
 
@@ -39,6 +39,7 @@ export default class ListeProduit extends React.Component{
 
     render(){
         console.log("render");
+        console.log(this.state.data)
         const aListeProduits = this.state.data.map((item, index)=>{
             //console.log(item);
             return(
