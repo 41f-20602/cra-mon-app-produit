@@ -14,11 +14,13 @@ export default class Produit extends React.Component{
 //        const {valeur, nom} = this.props;        
         
         return (
-            <article onClick={()=>{this.props.clique(this.props.info)}}>
-                <p>Nom : {nom}</p>
-                <p>Prix : {valeur} $</p>
+            <article className='unProduit init'  onClick={()=>{this.props.clique(this.props.info)}}>
+                <div className='image'><img src="204x204.png" /></div>
+                <div className='texte'>
+                    <p className='nom'>Nom : {nom}</p>
+                    <p>Fabricant ou autre mot qui permet de comprendre... : {this.props.info.brasserie}</p>
+                </div>
             </article>
-            
         );
     }
 }

@@ -36,22 +36,33 @@ export default class Entete extends React.Component {
         let boutonLogin = <button disabled={actif} onClick={this.login}>{(this.state.connecter ? "Se déconnecter" : "Se connecter")}</button>;
 
         return(
-            <header>
-                <h1>Titre de mon application</h1>
+            <header className="App-header">
                 <nav>
-                    <a href="/">Accueil</a>
-                    <Link to="/">Accueil (Link)</Link>
-                    <NavLink activeClassName="pageActive" exact to="/">Accueil (NavLink)</NavLink>
-                    
-                    <a href="/produit">Produit</a>
-                    <Link to="/produit">produit (Link)</Link>
-                    <NavLink  activeClassName="pageActive"  to="/produit">produit (NavLink)</NavLink>
-                </nav>
-                <section>
-                    <input disabled={(this.state.connecter ? "disabled" : "")} value={this.state.courriel} onChange={this.changeCourriel} name="courriel"></input>
-                    {boutonLogin}
-                    <p>{this.state.courriel}</p>
-                </section>
+                    <div className="top-nav">
+						<div className="barre">
+							<Link className="logo" to="/">
+								B<span>iero</span>
+							</Link>
+							<span className="flex-spacer"></span>
+							<p className="menu-mobile"></p>
+						</div>
+						<span className="flex-spacer"></span>
+						<ul>
+							<li>
+								<NavLink activeClassName="pageActive" to="/produit">Les produits</NavLink>
+							</li>
+                        </ul>
+                        <section>
+                            <input disabled={(this.state.connecter ? "disabled" : "")} value={this.state.courriel} onChange={this.changeCourriel} name="courriel"></input>
+                            {boutonLogin}
+                            <p>{this.state.courriel}</p>
+                        </section>
+					</div>
+				</nav>
+                
+                
+               
+                
             </header>
         );
     }

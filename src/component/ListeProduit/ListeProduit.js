@@ -79,7 +79,10 @@ export default class ListeProduit extends React.Component{
             <section>
                 <button onClick={this.retirerProduit}>Retirer produit</button>
                 <p>Liste de produit</p>
-                {aListeProduits}
+                <section className="listeProduit">
+                    {aListeProduits}
+                </section>
+                
             </section>
         );
     }
