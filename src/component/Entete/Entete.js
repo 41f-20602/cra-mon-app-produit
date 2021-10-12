@@ -49,7 +49,7 @@ export default class Entete extends React.Component {
                     <NavLink  activeClassName="pageActive"  to="/produit">produit (NavLink)</NavLink>
                 </nav>
                 <section>
-                    <input value={this.state.courriel} onChange={this.changeCourriel} name="courriel"></input>
+                    <input disabled={(this.state.connecter ? "disabled" : "")} value={this.state.courriel} onChange={this.changeCourriel} name="courriel"></input>
                     {boutonLogin}
                     <p>{this.state.courriel}</p>
                 </section>
