@@ -31,6 +31,7 @@ export default class ListeProduit extends React.Component{
             .then(reponse => reponse.json())
             .then(donnees =>{
                 this.setState({data:donnees.data})
+                
             })
         
     }
