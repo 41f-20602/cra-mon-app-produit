@@ -7,7 +7,7 @@ export default class Entete extends React.Component {
     constructor(props){
         super(props);
         this.state = {  courriel : "",
-                        connecter : false,
+                        connecter : props.connecter,
                      };
 
         this.login=this.login.bind(this);
@@ -15,16 +15,15 @@ export default class Entete extends React.Component {
     }
 
     login(){    // À compléter, ne permet pas de gérer tout les cas (connecter ou non, courriel valide ou non)
+        let bLogin = false;
         if(this.state.courriel && this.state.connecter){
-            this.setState({connecter : false});
+            bLogin = false
         }
         else if(this.state.courriel && !this.state.connecter){
-            this.setState({connecter : true});
+            bLogin = true;
         }
-        else {
-            this.setState({connecter : false});
-        }
-
+        this.setState({connecter : bLogin});
+        this.props.surConnexion(bLogin);
     }
 
     changeCourriel(evt){

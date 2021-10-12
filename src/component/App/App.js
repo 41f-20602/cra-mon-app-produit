@@ -11,14 +11,25 @@ import './App.css';
 
 export default class App extends React.Component{
 
+  constructor(){
+    super();
+    this.state={connecter : false};
+    
+    this.connexion = this.connexion.bind(this);
+  }
+
+  connexion(bLogin){
+      this.setState({connecter: bLogin});
+  }
+
   render(){
     return(
       <Router>
-        <Entete></Entete>
+        <Entete surConnexion={this.connexion} connecter={this.state.connecter}></Entete>
         <Switch>
             <Route exact path="/" component={Accueil}></Route>
             <Route exact path ="/produit">
-              <ListeProduit></ListeProduit>
+              <ListeProduit connecter={this.state.connecter}></ListeProduit>
             </Route>
             <Route exact path ="/produit/:id">
               <p>Détail d'un produit</p>

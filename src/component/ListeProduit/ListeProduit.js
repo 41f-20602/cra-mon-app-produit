@@ -17,9 +17,21 @@ export default class ListeProduit extends React.Component{
         const dummyData = [...Array(10)].map((item, index)=>{
             return {"id":index, "nom": "lorem "+ index, "valeur": index*index};
         })
+
+        
         console.log(dummyData);
 
         this.setState({data: dummyData})
+
+        // Si jamais vous avez besoin d'envoyer un entete http...
+        // Référez-vous au todo...
+        // PUT => Demande une authentification de type "Basic "+ btoa("biero:biero");
+
+        fetch("http://127.0.0.1:8000/webservice/php/biere")
+            .then(reponse => reponse.json())
+            .then(donnees =>{
+                this.setState({data:donnees.data})
+            })
         
     }
 
@@ -37,16 +49,25 @@ export default class ListeProduit extends React.Component{
         console.log(e);
     }
 
+    modif(id){
+        console.log("modifier le produit", id );
+    }
+
     render(){
         console.log("render");
         console.log(this.state.data)
+        
+        
         const aListeProduits = this.state.data.map((item, index)=>{
-            //console.log(item);
+            //console.log(btnModifier);
+            let btnModifier = "";
+            if(this.props.connecter){
+                btnModifier = <button onClick={()=>this.modif(item.id_biere)}>Modifier</button>;
+            }
             return(
                 <article>
                     <Produit info={item} clique={this.cliqueProduit} key={index}></Produit>
-                    
-                    <button>Modifier</button>
+                    {btnModifier}
                 </article>
             )
         });
