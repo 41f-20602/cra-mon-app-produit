@@ -43,13 +43,17 @@ export default class ListeProduit extends React.Component{
         const aListeProduits = this.state.data.map((item, index)=>{
             //console.log(item);
             return(
-                <Produit info={item} clique={this.cliqueProduit} key={index}></Produit>
-                //<Produit {...item} key={index}></Produit>
+                <article>
+                    <Produit info={item} clique={this.cliqueProduit} key={index}></Produit>
+                    
+                    <button>Modifier</button>
+                </article>
             )
         });
         //console.log(aListeProduits);
 
         return (
+            
             <section>
                 <button onClick={this.retirerProduit}>Retirer produit</button>
                 <p>Liste de produit</p>
